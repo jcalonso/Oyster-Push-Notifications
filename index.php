@@ -95,7 +95,13 @@ function addJourneysToDb( $data ) {
                     $journeysInserted++;
 
                     // Send push notification
-                    sendPushNotification( 'New journeys registered', 'Trip from: '.$startStation. ' to: '.$endStation. ' on: '.$startTime );
+                    $body   = "Trip from: " . $startStation
+                            . "\nto: " . $endStation
+                            . "\non: " . $days['date']
+                            . "\ncharge: £" . $charge
+                            . "\nbalance: £" . $balance;
+
+                    sendPushNotification( 'New journey registered', $body );
                 }
             }
         }
